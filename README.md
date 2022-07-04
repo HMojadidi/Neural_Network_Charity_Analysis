@@ -20,7 +20,7 @@ The goal was to attempt to develop a model with over 75% accuracy in predicting 
 
 # Results
 
-### Preprocessing
+### Data Preprocessing
 
 The first step was to examine and preprocess the provided dataset.
 
@@ -32,3 +32,27 @@ The first step was to examine and preprocess the provided dataset.
 * All "object" type columns were encoded using OneHotEncoder.
 * The SPECIAL_CONSIDERATIONS_N column was dropped, as it was redundant to the SPECIAL_CONSIDERATIONS_Y column.
 * All columns were then scaled using StandardScaler.
+
+### Compiling, Training, and Evaluating the Model
+
+In the initial model I used:
+
+* two layers -- one with 80 neurons, the second with 45 neurons -- providing me with 6,891 total and trainable parameters;
+* both layers used 'relu' activation functions;
+* the output layer used 'sigmoid' activation function. Unfortunately I was only able to achieve 72.4% accuracy with this model.
+
+I tried three more models in an attempt to reach 75% accuracy. In my subsequent attempts I attempted:
+
+* binning INCOME_AMT values greater than $5 million into a '5M+' bin
+* adding a third hidden layer
+* increasing the total number of trainable parameters to as high as 7,591
+* increasing training epochs from 100 to as high as 200
+* trying out the 'adam', 'adamax' and 'nadam' optimizers when compiling the model;
+* using 'tanh' activation functions on the hidden layers;
+* un-binning certain values by lowering the threshold from 1000 values to 700 values on both APPLICATION_TYPE and CLASSIFICATION.
+
+Across all four of my attempts I never managed to raise my models' accuracy above 74%.
+
+# SUMMARY
+
+With the aforementioned failed attempts in neaural networks to improve accuracy beyond 74%, my recommendation would be to attempt some other methods such as Random Forests or SVM to yield better results. In neural networks there are too many moving parts to be able to pinpoint which would make the most impactful improvment in accuracy. 
