@@ -20,7 +20,7 @@ The goal was to attempt to develop a model with over 75% accuracy in predicting 
 
 # Results
 
-Preprocessing
+### Preprocessing
 
 The first step was to examine and preprocess the provided dataset.
 
